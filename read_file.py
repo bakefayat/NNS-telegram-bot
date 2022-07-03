@@ -15,8 +15,13 @@ def list_of_products_by_code():
   pan = pd.read_excel('http://asbadrah.ir/tele-bot/NNS/novin.xlsx')
   df = pd.DataFrame(pan, )
   codes = df['code'].tolist()
-  products = ', '.join(str(codes))
-  return products
+  names = df['name'].tolist()
+  products = list(zip(codes, names))
+  str = ""
+  for code, name in products:
+    str += f'{code}: {name}\n'
+  print(str)
+  return str
 
 def list_of_products_by_name():
   pan = pd.read_excel('http://asbadrah.ir/tele-bot/NNS/novin.xlsx')
